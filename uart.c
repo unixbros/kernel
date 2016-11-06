@@ -11,8 +11,7 @@
 
 //------------------------------------------------------------------------
 void
-uart_putc(uint32_t c)
-{
+uart_putc(uint32_t c) {
 	for (;;)
 	{
 		if (mmio_read(AUX_MU_LSR_REG) & 0x20)
@@ -32,8 +31,7 @@ uart_puts(char *str) {
 }
 
 void
-uart_init()
-{
+uart_init() {
 	uint32_t ra;
 
 	mmio_write(AUX_ENABLES, 1);
@@ -57,12 +55,12 @@ uart_init()
 	mmio_write(GPPUD, 0);
 
 	for(ra = 0; ra < 150; ra++)
-		sleep_cycles(ra);
+		skip_cycles(ra);
 
 	mmio_write(GPPUDCLK0, (1 << 14) | (1 << 15));
 
 	for(ra = 0; ra < 150; ra++)
-		sleep_cycles(ra);
+		skip_cycles(ra);
 
 	mmio_write(GPPUDCLK0, 0);
 	mmio_write(AUX_MU_CNTL_REG, 3);

@@ -9,7 +9,9 @@ LD           = ${CROSS_PREFIX}ld
 
 OBJ = boot.o mmio.o uart.o main.o
 
+all: ${OBJ} elf kernel.bin
 elf: ${OBJ}
+	${LD} -o $@ ${LDFLAGS} ${OBJ}
 kernel.bin: elf
 	${OBJCOPY} $< -O binary $@
 
