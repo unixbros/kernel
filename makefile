@@ -13,7 +13,7 @@ all: ${OBJ} elf kernel.bin
 elf: ${OBJ}
 	${LD} -o $@ ${LDFLAGS} ${OBJ}
 kernel.bin: elf
-	${OBJCOPY} $< -O binary $@
+	${OBJCOPY} elf -O binary $@
 
 clean:
 	rm -rf ${OBJ} elf kernel.bin

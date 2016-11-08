@@ -11,7 +11,7 @@
 
 //------------------------------------------------------------------------
 void
-uart_putc(uint32_t c) {
+uart_putc(word c) {
 	for (;;)
 	{
 		if (mmio_read(AUX_MU_LSR_REG) & 0x20)
@@ -22,8 +22,8 @@ uart_putc(uint32_t c) {
 }
 
 void
-uart_puts(char *str) {
-	char *p = str;
+uart_puts(byte *str) {
+	byte *p = str;
 
 	/* XXX */
 	while (*p)
@@ -32,7 +32,7 @@ uart_puts(char *str) {
 
 void
 uart_init() {
-	uint32_t ra;
+	word ra;
 
 	mmio_write(AUX_ENABLES, 1);
 	mmio_write(AUX_MU_IER_REG, 0);

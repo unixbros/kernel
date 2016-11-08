@@ -18,6 +18,6 @@
 #define AUX_MU_BAUD_REG 0x20215068
 
 
-void uart_putc(uint32_t);
-void uart_puts(char *);
+void uart_putc(word);
+void uart_puts(byte *);
 void uart_init();
