@@ -1,5 +1,5 @@
 typedef unsigned char  octet;
-typedef octet          byte;
+typedef char           byte;
 typedef unsigned short half;
 typedef unsigned int   word;
 typedef _Bool          bool;

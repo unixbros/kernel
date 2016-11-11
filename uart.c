@@ -9,23 +9,28 @@
  * alt function 0 for uart0
  */
 
-//------------------------------------------------------------------------
 void
 uart_putc(word c) {
 	for (;;)
-	{
 		if (mmio_read(AUX_MU_LSR_REG) & 0x20)
 			break;
-	}
 
 	mmio_write(AUX_MU_IO_REG, c);
+}
+
+word
+uart_getc(void) {
+	for (;;)
+		if (mmio_read(AUX_MU_LSR_REG) & 0x10)
+			break;
+
+	return mmio_read(AUX_MU_IO_REG);
 }
 
 void
 uart_puts(byte *str) {
 	byte *p = str;
 
-	/* XXX */
 	while (*p)
 		uart_putc(*p++);
 }

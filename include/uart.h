@@ -19,5 +19,6 @@
 
 
 void uart_putc(word);
+word uart_getc(void);
 void uart_puts(byte *);
 void uart_init();
