@@ -4,8 +4,9 @@
 void
 kmain(word r0, word r1, word atags) {
 	uart_init();
-	uart_puts("Hello World");
+	uart_puts("Hello World\r\n");
+
 
 	for (;;)
-		;
+		uart_putc(uart_getc());
 }

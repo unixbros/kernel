@@ -21,7 +21,7 @@ uart_putc(word c) {
 word
 uart_getc(void) {
 	for (;;)
-		if (mmio_read(AUX_MU_LSR_REG) & 0x10)
+		if (mmio_read(AUX_MU_LSR_REG) & 0x01)
 			break;
 
 	return mmio_read(AUX_MU_IO_REG);
